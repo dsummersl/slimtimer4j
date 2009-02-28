@@ -1,0 +1,21 @@
+========================================================================
+Slimtimer4j client
+========================================================================
+
+A basic library to support the slimtimer.com API - at its most basic:
+
+SlimTimer timer = new SlimTimer("user","pass","apiKey");
+List<Task> tasks = timer.getAllTasks();
+
+See SlimTimerClient.java for a more comprehensive set of features available (pretty
+much whatever the slimtimer API provides, this library provides access to it).
+
+This library does have some dependencies - see the pom.xml for details.
+
+========================================================================
+TODO:
+========================================================================
+
+- provide a full binary.
+- more examples
+- convenience methods to filter TimeEntries by their status (ie fine current active entries easily).
