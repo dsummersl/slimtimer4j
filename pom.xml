@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.pinedesk.slimtimer</groupId>
-    <artifactId>slimtimer</artifactId>
+    <artifactId>slimtimer4j</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>slimtimer</name>
+    <name>slimtimer4j</name>
     <url>http://maven.apache.org</url>
     <repositories>
         <repository>
@@ -13,7 +13,31 @@
             <name>Codehaus Maven 2.x Repository</name>
             <url>http://repository.codehaus.org</url>
         </repository>
+				<repository>
+						<id>mc-release</id>
+						<name>Local Maven repository of releases</name>
+						<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+						<snapshots>
+								<enabled>false</enabled>
+						</snapshots>
+						<releases>
+								<enabled>true</enabled>
+						</releases>
+				</repository>
     </repositories>
+		<pluginRepositories>
+				<pluginRepository>
+						<id>mc-release</id>
+						<name>Local Maven repository of releases</name>
+						<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+						<snapshots>
+								<enabled>false</enabled>
+						</snapshots>
+						<releases>
+								<enabled>true</enabled>
+						</releases>
+				</pluginRepository>
+		</pluginRepositories>
     <build>
         <plugins>
             <plugin>
@@ -24,6 +48,21 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+						<plugin>
+								<groupId>com.google.code.maven-license-plugin</groupId>
+								<artifactId>maven-license-plugin</artifactId>
+								<configuration>
+										<header>src/etc/license.txt</header>
+								</configuration>
+							  <executions>
+										<execution>
+												<phase>process-resources</phase>
+												<goals>
+														<goal>format</goal>
+												</goals>
+										</execution>
+								</executions>
+						</plugin>
         </plugins>
     </build>
     <dependencies>
