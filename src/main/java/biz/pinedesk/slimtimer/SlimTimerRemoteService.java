@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SlimTimerRemoteService implements RemoteService {
-    private HttpClient client = new DefaultHttpClient();
+    private final HttpClient client = new DefaultHttpClient();
     protected XStream stream;
 
     public SlimTimerRemoteService() {

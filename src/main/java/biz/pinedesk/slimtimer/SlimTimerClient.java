@@ -41,21 +41,21 @@ public class SlimTimerClient {
             task = slimTimer.addTask(task);
             System.out.println("CREATE");
             System.out.println("Task: " + task.getName() + "(" + task.getId() + ")");
-            System.out.println(" tags: " + task.getTags());
-            System.out.println("  hrs: " + task.getHours());
+            System.out.println("tags: " + task.getTags());
+            System.out.println(" hrs: " + task.getHours());
 
             task = slimTimer.getTask(task.getId());
             System.out.println("READ");
             System.out.println("Task: " + task.getName() + "(" + task.getId() + ")");
-            System.out.println(" tags: " + task.getTags());
-            System.out.println("  hrs: " + task.getHours());
+            System.out.println("tags: " + task.getTags());
+            System.out.println(" hrs: " + task.getHours());
 
             task.setTags("one,two");
             task = slimTimer.updateTask(task);
             System.out.println("UPDATE");
             System.out.println("Task: " + task.getName() + "(" + task.getId() + ")");
-            System.out.println(" tags: " + task.getTags());
-            System.out.println("  hrs: " + task.getHours());
+            System.out.println("tags: " + task.getTags());
+            System.out.println(" hrs: " + task.getHours());
 
             slimTimer.deleteTask(task.getId());
             System.out.println("DELETE");
@@ -70,8 +70,8 @@ public class SlimTimerClient {
             for (int i = 0; i < tasks.size(); i++) {
                 task = tasks.get(i);
                 System.out.println("Task: " + task.getName() + "(" + task.getId() + ")");
-                System.out.println(" tags: " + task.getTags());
-                System.out.println("  hrs: " + task.getHours());
+                System.out.println("tags: " + task.getTags());
+                System.out.println(" hrs: " + task.getHours());
             }
 
             TimeEntry entry = new TimeEntry();

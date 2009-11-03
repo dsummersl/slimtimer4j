@@ -12,10 +12,23 @@ much whatever the slimtimer API provides, this library provides access to it).
 
 This library does have some dependencies - see the pom.xml for details.
 
+
+========================================================================
+Building:
+========================================================================
+
+You can build the jar itself:
+
+mvn clean install
+
+You can build a binary script that demos the features:
+
+mvn package appassembler:assemble -DapiKey=<your api key> -Duser=<your user> -Dpassword=<your password>
+sh target/appassembler/bin/slimtimer4j
+
 ========================================================================
 TODO:
 ========================================================================
 
-- provide a full binary.
 - more examples
 - convenience methods to filter TimeEntries by their status (ie fine current active entries easily).

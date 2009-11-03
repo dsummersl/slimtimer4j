@@ -63,6 +63,23 @@
 										</execution>
 								</executions>
 						</plugin>
+						<plugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>appassembler-maven-plugin</artifactId>
+								<version>1.0</version>
+								<configuration>
+									<!--
+								mvn package appassembler:assemble -DapiKey=91c25a78d9e8bda1f8648f7b78a9e4	-Duser=dsummersl@yahoo.com -Dpassword=4b359a20
+									-->
+									<extraJvmArguments>-DapiKey=${apiKey} -Duser=${user} -Dpassword=${user}</extraJvmArguments>
+										<programs>
+												<program>
+														<mainClass>biz.pinedesk.slimtimer.SlimTimerClient</mainClass>
+														<name>slimtimer4j</name>
+												</program>
+										</programs>
+								</configuration>
+						</plugin>
         </plugins>
     </build>
     <dependencies>
