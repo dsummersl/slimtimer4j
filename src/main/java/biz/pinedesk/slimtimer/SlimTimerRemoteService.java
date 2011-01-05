@@ -26,7 +26,7 @@ import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class SlimTimerRemoteService implements RemoteService {
@@ -108,21 +108,21 @@ public class SlimTimerRemoteService implements RemoteService {
         HttpEntity responseEntity = response.getEntity();
 
         // debugging:
-//        System.out.println("DEBUG:");
-//        System.out.println("url = "+ url);
-//        if (message != null) {
-//            System.out.println("xml is: \n"+ stream.toXML(message));
-//        }
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(responseEntity.getContent()));
-//        String line = null;
-//        StringBuffer buffer = new StringBuffer();
-//        while ((line = reader.readLine()) != null) {
-//            buffer.append(line);
-//            System.out.println(line);
-//        }
+        System.out.println("DEBUG:");
+        System.out.println("url = "+ url);
+        if (message != null) {
+            System.out.println("xml is: \n"+ stream.toXML(message));
+        }
+        BufferedReader reader = new BufferedReader(new InputStreamReader(responseEntity.getContent()));
+        String line = null;
+        StringBuffer buffer = new StringBuffer();
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+            System.out.println(line);
+        }
         try {
-//            Object results = stream.fromXML(buffer.toString());
-            Object results = stream.fromXML(responseEntity.getContent());
+            Object results = stream.fromXML(buffer.toString());
+//            Object results = stream.fromXML(responseEntity.getContent());
             return results;
         }
         catch (CannotResolveClassException e) {

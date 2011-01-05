@@ -21,7 +21,7 @@ import org.picocontainer.DefaultPicoContainer;
 
 import java.io.IOException;
 
-public class SlimTimerClientTest extends TestCase {
+public class SlimTimerTest extends TestCase {
     public void testLogin() throws IOException {
         String apiKey = "abid";
         RemoteService remoteService = createMock(RemoteService.class);

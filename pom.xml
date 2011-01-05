@@ -13,31 +13,31 @@
             <name>Codehaus Maven 2.x Repository</name>
             <url>http://repository.codehaus.org</url>
         </repository>
-				<repository>
-						<id>mc-release</id>
-						<name>Local Maven repository of releases</name>
-						<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
-						<snapshots>
-								<enabled>false</enabled>
-						</snapshots>
-						<releases>
-								<enabled>true</enabled>
-						</releases>
-				</repository>
+        <repository>
+            <id>mc-release</id>
+            <name>Local Maven repository of releases</name>
+            <url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
     </repositories>
-		<pluginRepositories>
-				<pluginRepository>
-						<id>mc-release</id>
-						<name>Local Maven repository of releases</name>
-						<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
-						<snapshots>
-								<enabled>false</enabled>
-						</snapshots>
-						<releases>
-								<enabled>true</enabled>
-						</releases>
-				</pluginRepository>
-		</pluginRepositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mc-release</id>
+            <name>Local Maven repository of releases</name>
+            <url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
@@ -48,38 +48,53 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
-						<plugin>
-								<groupId>com.google.code.maven-license-plugin</groupId>
-								<artifactId>maven-license-plugin</artifactId>
-								<configuration>
-										<header>src/etc/license.txt</header>
-								</configuration>
-							  <executions>
-										<execution>
-												<phase>process-resources</phase>
-												<goals>
-														<goal>format</goal>
-												</goals>
-										</execution>
-								</executions>
-						</plugin>
-						<plugin>
-								<groupId>org.codehaus.mojo</groupId>
-								<artifactId>appassembler-maven-plugin</artifactId>
-								<version>1.0</version>
-								<configuration>
-									<!--
-								mvn package appassembler:assemble -DapiKey=91c25a78d9e8bda1f8648f7b78a9e4	-Duser=dsummersl@yahoo.com -Dpassword=4b359a20
-									-->
-									<extraJvmArguments>-DapiKey=${apiKey} -Duser=${user} -Dpassword=${user}</extraJvmArguments>
-										<programs>
-												<program>
-														<mainClass>biz.pinedesk.slimtimer.SlimTimerClient</mainClass>
-														<name>slimtimer4j</name>
-												</program>
-										</programs>
-								</configuration>
-						</plugin>
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <configuration>
+                    <header>src/etc/license.txt</header>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <extraJvmArguments>-DapiKey=${apiKey} -Duser=${user} -Dpassword=${password}</extraJvmArguments>
+                    <programs>
+                        <program>
+                            <mainClass>biz.pinedesk.slimtimer.SlimTimerClient</mainClass>
+                            <name>slimtimer4j</name>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>makejarwithdeps</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
