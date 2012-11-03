@@ -18,6 +18,7 @@ package biz.pinedesk.slimtimer;
 import biz.pinedesk.slimtimer.util.DateConverter;
 import biz.pinedesk.slimtimer.util.IsNilConverter;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -34,7 +35,7 @@ public class SlimTimerRemoteService implements RemoteService {
     protected XStream stream;
 
     public SlimTimerRemoteService() {
-        stream = new XStream();
+        stream = new XStream(new DomDriver());
         stream.alias("request", LoginRequest.class);
         stream.alias("user", User.class);
         stream.aliasField("api-key", LoginRequest.class, "apiKey");
